@@ -1,0 +1,16 @@
+name: WiFiSign
+author: hasashin
+version: 1.0
+description: This Plugin give you the ability to create warppoints.
+main: pl.poznan.put.WiFiSign
+api-version: 1.14
+
+softdepend: [Vault]
+
+commands:
+
+#TODO: Update Permissions!
+permissions:
+  WiFi.*:
+    description: Gives you all permissions.
+    default: true
