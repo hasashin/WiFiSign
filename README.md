@@ -1,11 +1,9 @@
 # WiFiSign v1.0
 
----
 WiFiSign is simple Bukkit Plugin. It allows you to connect far points on map with redstone connection without delays and distance restrictions. Plugin works on Bukkit based server version 1.14. Plugin wasn't tested on any previous relases of Bukkit server.
 
 ## Usage
 
----
 To use redstone WiFi simply hang sign on any block (it has to be __Oak Sign__) and place a lever on top of that block. Sign needs to contain these values:
 - first line: "[wifi]"
 - secong line: network name
@@ -15,7 +13,6 @@ All signs with the same network name working together. If any of these signs get
 
 ## Operation mode
 
----
 There are three modes of operation:
 - IN
 - OUT
