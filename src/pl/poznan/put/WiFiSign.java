@@ -31,11 +31,12 @@ public class WiFiSign extends JavaPlugin {
         Connections = new Hashtable<>();
         plugin = this;
         registerListeners();
+        Bukkit.getPluginCommand("wifireload").setExecutor(new CommandReload());
         runCheck();
         Integer signCount = 0;
         for(World world : Bukkit.getWorlds()){
             for(Chunk chunk : world.getLoadedChunks()){
-                checkChunk(chunk,signCount);
+                signCount = checkChunk(chunk,signCount);
             }
         }
         plugin.getLogger().info(signCount+" signs loaded");
@@ -99,7 +100,7 @@ public class WiFiSign extends JavaPlugin {
         }, 0,1);
     }
     
-    private void checkChunk(Chunk chunk,Integer count){
+    private int checkChunk(Chunk chunk,Integer count){
         for(int y=0;y<chunk.getWorld().getMaxHeight();y++){
             for(int x=0;x<16;x++){
                 for(int z=0;z<16;z++){
@@ -111,5 +112,6 @@ public class WiFiSign extends JavaPlugin {
                 }
             }
         }
+        return count;
     }
 }
