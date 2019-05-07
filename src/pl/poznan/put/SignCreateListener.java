@@ -14,7 +14,6 @@ public class SignCreateListener implements Listener {
     
     @EventHandler
     public static void onSignChange(SignChangeEvent e) {
-        
         Player p = e.getPlayer();
         parseSign(e.getBlock(), p, e.getLines());
         

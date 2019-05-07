@@ -10,7 +10,7 @@ import org.bukkit.event.world.ChunkLoadEvent;
 public class ChunkLoadListener implements Listener {
     
     @EventHandler
-    public static void onSignChange(ChunkLoadEvent e) {
+    public static void onChunkLoad(ChunkLoadEvent e) {
         if(!e.isNewChunk()){
             int x = 0;
             int z = 0;

@@ -99,13 +99,9 @@ public class WiFiSign extends JavaPlugin {
     }
     
     private void checkChunk(Chunk chunk){
-        int x = 0;
-        int z = 0;
         for(int y=0;y<chunk.getWorld().getMaxHeight();y++){
-            x=0;
-            for(;x<16;x++){
-                z=0;
-                for(;z<16;z++){
+            for(int x=0;x<16;x++){
+                for(int z=0;z<16;z++){
                     Block block = chunk.getBlock(x, y, z);
                     if(block.getType() == Material.OAK_WALL_SIGN){
                         plugin.getLogger().info("Znaleziono znak wifi");
