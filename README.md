@@ -1,4 +1,4 @@
-# WiFiSign v1.0
+# WiFiSign v1.1
 
 WiFiSign is simple Bukkit Plugin. It allows you to connect far points on map with redstone connection without delays and distance restrictions. Plugin works on Bukkit based server version 1.14. Plugin wasn't tested on any previous relases of Bukkit server.
 
