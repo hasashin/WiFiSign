@@ -3,6 +3,7 @@ package pl.poznan.put;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +20,10 @@ class SignRemoveListener implements Listener{
             BlockFace[] faces = {BlockFace.NORTH,BlockFace.WEST,BlockFace.EAST,BlockFace.SOUTH};
             for(BlockFace face : faces){
                 if(e.getBlock().getRelative(face).getType() == Material.OAK_WALL_SIGN){
-                    destroySign(e.getBlock().getRelative(face),e.getPlayer());
+                    Block signBlock = e.getBlock().getRelative(face);
+                    WallSign sign = (WallSign) signBlock.getBlockData();
+                    if(signBlock.getRelative(sign.getFacing().getOppositeFace()).equals(e.getBlock()))
+                        destroySign(e.getBlock().getRelative(face),e.getPlayer());
                 }
             }
         }
@@ -27,7 +31,6 @@ class SignRemoveListener implements Listener{
     }
     
     private static void destroySign(Block sign,Player player){
-        System.out.println("DUP");
         for(Object nameObj : WiFiSign.Connections.keySet().toArray()){
             boolean deletedSomething = false;
             String name = (String) nameObj;

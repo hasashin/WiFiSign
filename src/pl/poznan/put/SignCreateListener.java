@@ -19,7 +19,7 @@ public class SignCreateListener implements Listener {
         
     }
     
-    public static void parseSign(Block signBlock, Player player,String[] lines){
+    public static boolean parseSign(Block signBlock, Player player,String[] lines){
         if(lines[0].equalsIgnoreCase("[wifi]")){
             if(lines[2].matches("(IN|OUT|IO)?")){
                 if(!lines[1].isEmpty()){
@@ -43,7 +43,7 @@ public class SignCreateListener implements Listener {
                             Peer peer = (Peer)obj;
                             if(peer.signBlock.equals(signBlock)){
                                 blockExists = true;
-                                return;
+                                return false;
                             }
                         }
                         if(!blockExists){
@@ -61,9 +61,10 @@ public class SignCreateListener implements Listener {
                         if(player != null) player.sendMessage("Stworzono nową sieć "+lines[1]);
                         else WiFiSign.plugin.getLogger().info("Stworzono nową sieć "+lines[1]);
                     }
-                    
+                    return true;
                 }
             }
         }
+        return false;
     }
 }

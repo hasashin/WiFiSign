@@ -32,12 +32,13 @@ public class WiFiSign extends JavaPlugin {
         plugin = this;
         registerListeners();
         runCheck();
-        
+        Integer signCount = 0;
         for(World world : Bukkit.getWorlds()){
             for(Chunk chunk : world.getLoadedChunks()){
-                checkChunk(chunk);
+                checkChunk(chunk,signCount);
             }
         }
+        plugin.getLogger().info(signCount+" signs loaded");
         
         plugin.getLogger().log(Level.INFO, "WiFiSign Loaded Sucessfully!");
     }
@@ -98,14 +99,14 @@ public class WiFiSign extends JavaPlugin {
         }, 0,1);
     }
     
-    private void checkChunk(Chunk chunk){
+    private void checkChunk(Chunk chunk,Integer count){
         for(int y=0;y<chunk.getWorld().getMaxHeight();y++){
             for(int x=0;x<16;x++){
                 for(int z=0;z<16;z++){
                     Block block = chunk.getBlock(x, y, z);
                     if(block.getType() == Material.OAK_WALL_SIGN){
-                        plugin.getLogger().info("Znaleziono znak wifi");
-                        SignCreateListener.parseSign(block, null, ((Sign)block.getState()).getLines());
+                        if(SignCreateListener.parseSign(block, null, ((Sign)block.getState()).getLines()))
+                            count++;
                     }
                 }
             }

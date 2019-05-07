@@ -1,7 +1,7 @@
 name: WiFiSign
 author: hasashin
-version: 1.0
-description: This Plugin give you the ability to create warppoints.
+version: 1.1
+description: This plugin is able to send redstone through air.
 main: pl.poznan.put.WiFiSign
 api-version: 1.14
 
