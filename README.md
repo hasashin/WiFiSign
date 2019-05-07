@@ -18,8 +18,8 @@ There are three modes of operation:
 - OUT
 - IO _(default)_
 
-__IN__ mode turns off lever toggling for sign on which is written. _IN_ sign can be used when building one-way signal and not needing lever on one site.
-__OUT__ mode disables power checking on sign so powering _OUT_ sign with redstone doesn't change anything in network
+__IN__ mode turns off lever toggling for sign on which is written. _IN_ sign can be used when building one-way signal and not needing lever on one site.  
+__OUT__ mode disables power checking on sign so powering _OUT_ sign with redstone doesn't change anything in network.  
 __IO__ mode is default operation mode, when sign accepts power and sends it to lever. You can left third line empty to create _IO_ sign.
 
 ---
