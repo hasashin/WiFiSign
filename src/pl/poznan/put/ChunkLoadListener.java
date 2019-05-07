@@ -12,21 +12,19 @@ public class ChunkLoadListener implements Listener {
     @EventHandler
     public static void onChunkLoad(ChunkLoadEvent e) {
         if(!e.isNewChunk()){
-            int x = 0;
-            int z = 0;
+            Integer count=0;
             for(int y=0;y<e.getWorld().getMaxHeight();y++){
-                x=0;
-                for(;x<16;x++){
-                    z=0;
-                    for(;z<16;z++){
+                for(int x=0;x<16;x++){
+                    for(int z=0;z<16;z++){
                         Block block = e.getChunk().getBlock(x, y, z);
-                        if(block.getType() == Material.OAK_WALL_SIGN){
-                            WiFiSign.plugin.getLogger().info("Znaleziono znak wifi");
-                            SignCreateListener.parseSign(block, null, ((Sign)block.getState()).getLines());
+                        if(block.getType() == Material.OAK_WALL_SIGN){         
+                            if(SignCreateListener.parseSign(block, null, ((Sign)block.getState()).getLines()));
+                                count++;
                         }
                     }
                 }
             }
+            WiFiSign.plugin.getLogger().info(count+" signs loaded from chunk");
         }
     }
 }

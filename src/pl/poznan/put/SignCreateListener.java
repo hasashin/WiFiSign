@@ -49,8 +49,8 @@ public class SignCreateListener implements Listener {
                         if(!blockExists){
                             list.add(new Peer(signBlock,opmode));
                             signBlock.getChunk().setForceLoaded(true);
-                            if(player != null) player.sendMessage("Dodano element do sieci "+lines[1]);
-                            else WiFiSign.plugin.getLogger().info("Dodano element do sieci "+lines[1]);
+                            if(player != null) player.sendMessage("[WiFiSign] Element added to network "+lines[1]);
+                            else WiFiSign.plugin.getLogger().info("[WiFiSign] Element added to network "+lines[1]);
                         }
                     }
                     else{
@@ -58,8 +58,8 @@ public class SignCreateListener implements Listener {
                         list.add(new Peer(signBlock, opmode));
                         WiFiSign.Connections.put(lines[1],list);
                         signBlock.getChunk().setForceLoaded(true);
-                        if(player != null) player.sendMessage("Stworzono nową sieć "+lines[1]);
-                        else WiFiSign.plugin.getLogger().info("Stworzono nową sieć "+lines[1]);
+                        if(player != null) player.sendMessage("[WiFiSign] Created network "+lines[1]);
+                        else WiFiSign.plugin.getLogger().info("[WiFiSign] Created network "+lines[1]);
                     }
                     return true;
                 }
