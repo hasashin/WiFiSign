@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 class CommandReload implements CommandExecutor {
-
+    
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         int signCount=0;
@@ -24,15 +24,17 @@ class CommandReload implements CommandExecutor {
                 signCount = checkChunk(chunk,signCount);
             }
         }
-        if(sender instanceof Player){
-            ((Player)sender).sendMessage(signCount + " signs reloaded");
-        }
-        else{
-            WiFiSign.plugin.getLogger().info(signCount + " signs reloaded");
+        if(signCount>0){
+            if(sender instanceof Player){
+                ((Player)sender).sendMessage(signCount + " signs reloaded");
+            }
+            else{
+                WiFiSign.plugin.getLogger().info(signCount + " signs reloaded");
+            }
         }
         return true;
     }
-
+    
     private int checkChunk(Chunk chunk,Integer count){
         for(int y=0;y<chunk.getWorld().getMaxHeight();y++){
             for(int x=0;x<16;x++){
@@ -40,14 +42,14 @@ class CommandReload implements CommandExecutor {
                     Block block = chunk.getBlock(x, y, z);
                     if(block.getType() == Material.OAK_WALL_SIGN){
                         if(SignCreateListener.parseSign(block, null, ((Sign)block.getState()).getLines()))
-                            count++;
+                        count++;
                     }
                 }
             }
         }
         return count;
     }
-
-
+    
+    
 }
 

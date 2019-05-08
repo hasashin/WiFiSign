@@ -24,7 +24,8 @@ public class ChunkLoadListener implements Listener {
                     }
                 }
             }
-            WiFiSign.plugin.getLogger().info(count+" signs loaded from chunk");
+            if(count>0)
+                WiFiSign.plugin.getLogger().info(count+" signs loaded from chunk");
         }
     }
 }

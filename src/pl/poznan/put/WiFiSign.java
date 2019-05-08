@@ -14,6 +14,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.type.Switch;
+import org.bukkit.block.data.type.WallSign;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -32,6 +33,8 @@ public class WiFiSign extends JavaPlugin {
         plugin = this;
         registerListeners();
         Bukkit.getPluginCommand("wifireload").setExecutor(new CommandReload());
+        Bukkit.getPluginCommand("wifinets").setExecutor(new CommandList());
+
         runCheck();
         Integer signCount = 0;
         for(World world : Bukkit.getWorlds()){
@@ -39,7 +42,9 @@ public class WiFiSign extends JavaPlugin {
                 signCount = checkChunk(chunk,signCount);
             }
         }
-        plugin.getLogger().info(signCount+" signs loaded");
+        if(signCount>0){
+            plugin.getLogger().info(signCount+" signs loaded");
+        }
         
         plugin.getLogger().log(Level.INFO, "WiFiSign Loaded Sucessfully!");
     }
@@ -64,8 +69,6 @@ public class WiFiSign extends JavaPlugin {
                     boolean powered=false;
                     ArrayList<Peer> list = WiFiSign.Connections.get(name);
                     for(Peer peer : list){
-                        if(!peer.signBlock.getChunk().isLoaded())
-                        return;
                         if(peer.mode != Peer.OperationMode.OUT){
                             if(peer.signBlock.isBlockPowered())
                             powered = true;
@@ -75,23 +78,23 @@ public class WiFiSign extends JavaPlugin {
                         peer.powered = powered;
                         if(peer.mode != Peer.OperationMode.IN){
                             BlockFace dir = BlockFace.SELF;
-                            if(peer.signBlock.getBlockData() instanceof Directional){
-                                Directional sign = (Directional) peer.signBlock.getBlockData();
+                            if(peer.signBlock.getBlockData() instanceof WallSign){
+                                Directional sign = (WallSign) peer.signBlock.getBlockData();
                                 dir = sign.getFacing().getOppositeFace();
                             }
                             else{
-                                return;
+                                break;
                             }
                             BlockState leverBlock = peer.signBlock.getRelative(dir).getRelative(BlockFace.UP).getState();
                             
-                            if(leverBlock.getBlock().getBlockData() instanceof org.bukkit.block.data.type.Switch) {
+                            if(leverBlock.getBlock().getBlockData() instanceof Switch) {
                                 Switch lever = (Switch)leverBlock.getBlock().getBlockData();
                                 lever.setPowered(peer.powered);
                                 leverBlock.setBlockData(lever);
                                 leverBlock.update();
                             }
                             else
-                                return;
+                                break;
                             
                         }
                     }
