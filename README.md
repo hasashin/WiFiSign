@@ -1,11 +1,11 @@
-# WiFiSign v1.1
+# WiFiSign v1.4
 
 WiFiSign is simple Bukkit Plugin. It allows you to connect far points on map with redstone connection without delays and distance restrictions. Plugin works on Bukkit based server version 1.14. Plugin wasn't tested on any previous relases of Bukkit server.
 
 ## Usage
 
 To use redstone WiFi simply hang sign on any block (it has to be __Oak Sign__) and place a lever on top of that block. Sign needs to contain these values:
-- first line: "[wifi]"
+- first line: [wifi]
 - secong line: network name
 - third line _(optional)_: operation mode 
 
@@ -21,6 +21,13 @@ There are three modes of operation:
 __IN__ mode turns off lever toggling for sign on which is written. _IN_ sign can be used when building one-way signal and not needing lever on one site.  
 __OUT__ mode disables power checking on sign so powering _OUT_ sign with redstone doesn't change anything in network.  
 __IO__ mode is default operation mode, when sign accepts power and sends it to lever. You can left third line empty to create _IO_ sign.
+
+## Commands
+
+There are few commands to use:
+`/wifireload` - this command reloads all signs from chunks loaded to memory
+`/wifinets` - this command prints all registered networks
+`/wifinet [net_name]` - this command prints how many elements are in given network
 
 ---
 © 2019 Dominik Hażak

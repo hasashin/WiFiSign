@@ -53,12 +53,10 @@ class SignRemoveListener implements Listener{
             if(deletedSomething){
                 if(WiFiSign.Connections.get(name).size() == 0){
                     WiFiSign.Connections.remove(name);
-                    if(player != null) player.sendMessage("[WiFiSign] Usunięto sieć "+name);
-                    else WiFiSign.plugin.getLogger().info("[WiFiSign] Usunięto sieć "+name);
+                    if(player != null) player.sendMessage("[WiFiSign] Network "+name+" deleted");
                 }
                 else{
-                    if(player != null) player.sendMessage("[WiFiSign] Usunięto element sieci "+ name);
-                    else WiFiSign.plugin.getLogger().info("[WiFiSign] Usunięto element sieci "+ name);
+                    if(player != null) player.sendMessage("[WiFiSign] Element of network "+ name+" deleted");
                 }
             }
         }

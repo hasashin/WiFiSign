@@ -34,6 +34,7 @@ public class WiFiSign extends JavaPlugin {
         registerListeners();
         Bukkit.getPluginCommand("wifireload").setExecutor(new CommandReload());
         Bukkit.getPluginCommand("wifinets").setExecutor(new CommandList());
+        Bukkit.getPluginCommand("wifinet").setExecutor(new CommandNet());
 
         runCheck();
         Integer signCount = 0;
@@ -83,7 +84,7 @@ public class WiFiSign extends JavaPlugin {
                                 dir = sign.getFacing().getOppositeFace();
                             }
                             else{
-                                break;
+                                continue;
                             }
                             BlockState leverBlock = peer.signBlock.getRelative(dir).getRelative(BlockFace.UP).getState();
                             
@@ -94,7 +95,7 @@ public class WiFiSign extends JavaPlugin {
                                 leverBlock.update();
                             }
                             else
-                                break;
+                                continue;
                             
                         }
                     }

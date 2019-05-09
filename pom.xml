@@ -6,7 +6,7 @@
 
     <groupId>pl.poznan.put</groupId>
     <artifactId>WiFiSign</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <build>

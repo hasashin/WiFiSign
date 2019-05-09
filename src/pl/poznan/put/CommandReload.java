@@ -26,7 +26,7 @@ class CommandReload implements CommandExecutor {
         }
         if(signCount>0){
             if(sender instanceof Player){
-                ((Player)sender).sendMessage(signCount + " signs reloaded");
+                ((Player)sender).sendMessage("[WiFiSign] "+signCount + " signs reloaded");
             }
             else{
                 WiFiSign.plugin.getLogger().info(signCount + " signs reloaded");

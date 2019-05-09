@@ -1,6 +1,6 @@
 name: WiFiSign
 author: hasashin
-version: 1.3
+version: 1.4
 description: This plugin is able to send redstone through air.
 main: pl.poznan.put.WiFiSign
 api-version: 1.14
@@ -16,8 +16,11 @@ commands:
     description: Gets list of existing networks
     usage: /wifinets
     permission: WiFi.list
+  wifinet:
+    description: Gets count of elements existing in network
+    usage: /wifinet [net_name]
+    permision: WiFi.net 
 
-#TODO: Update Permissions!
 permissions:
   WiFi.*:
     description: Gives you all permissions.
@@ -25,4 +28,6 @@ permissions:
   WiFi.reload:
     default: op
   WiFi.list:
+    default: op
+  WiFi.net:
     default: op

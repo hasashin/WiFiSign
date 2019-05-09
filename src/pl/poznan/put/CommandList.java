@@ -17,7 +17,7 @@ class CommandList implements CommandExecutor {
         sb.deleteCharAt(sb.length()-1);
         sb.deleteCharAt(sb.length()-1);
         if(sender instanceof Player){
-            ((Player)sender).sendMessage("Available networks: "+sb.toString());
+            ((Player)sender).sendMessage("[WiFiSign] Available networks: "+sb.toString());
         }
         else{
             WiFiSign.plugin.getLogger().info("Available networks: "+sb.toString());
