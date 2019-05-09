@@ -25,9 +25,9 @@ __IO__ mode is default operation mode, when sign accepts power and sends it to l
 ## Commands
 
 There are few commands to use:
-`/wifireload` - this command reloads all signs from chunks loaded to memory
-`/wifinets` - this command prints all registered networks
-`/wifinet [net_name]` - this command prints how many elements are in given network
+`/wifireload` - this command reloads all signs from chunks loaded to memory  
+`/wifinets` - this command prints all registered networks  
+`/wifinet [net_name]` - this command prints how many elements are in given network  
 
 ---
 © 2019 Dominik Hażak
